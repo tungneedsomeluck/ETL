@@ -1,0 +1,82 @@
+﻿<DeploymentSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Target>
+    <Database>SSAS</Database>
+    <Server>LAPTOPCUAAN\ANALYSISSERVER</Server>
+    <ConnectionString>Data Source=LAPTOPCUAAN\ANALYSISSERVER;Timeout=0</ConnectionString>
+  </Target>
+  <Options>
+    <TransactionalDeployment>false</TransactionalDeployment>
+    <PartitionDeployment>DeployPartitions</PartitionDeployment>
+    <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
+    <ProcessingOption>Default</ProcessingOption>
+    <OutputScript></OutputScript>
+    <ImpactAnalysisFile></ImpactAnalysisFile>
+    <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
+    <OptimizationSettingsDeployment>Deploy</OptimizationSettingsDeployment>
+    <WriteBackTableCreation>UseExisting</WriteBackTableCreation>
+  </Options>
+  <Snapshot>
+    <ObjectSnapshots>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
+        <TimeStamp>HSvsS8mTSlwZwF0gI7Jsxmh8vU8=1/4/2024 12:25:10 AM1/2/2024 11:34:17 PM</TimeStamp>
+        <ID>
+          <String>DDS FOOTBALL</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.DataSourceView</Type>
+        <TimeStamp>9fHkV44iA/UCnv4wmUL1N8WY22E=1/2/2024 10:29:37 PM1/2/2024 11:34:17 PM</TimeStamp>
+        <ID>
+          <String>DDS FOOTBALL</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>9QPLmgt6nLDcJx3bi2bC2Rf+H8k=1/4/2024 2:58:26 PM1/2/2024 11:34:17 PM</TimeStamp>
+        <ID>
+          <String>DIM Role</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>jiLY24GidDwZip/ORYl38F5zavk=1/4/2024 2:58:26 PM1/2/2024 11:34:17 PM</TimeStamp>
+        <ID>
+          <String>DIM Team</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>rrEW4k3ABhpo5mD4zu8unB35sig=1/4/2024 2:58:26 PM1/2/2024 11:34:17 PM</TimeStamp>
+        <ID>
+          <String>DIM Date</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>d7katxOWIJlL5dZ0RcUr5UjzInA=1/4/2024 2:58:26 PM1/2/2024 11:34:17 PM</TimeStamp>
+        <ID>
+          <String>DIM League</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>JJA91p+wX59K9pPoCi8WGKAAZaw=1/4/2024 3:01:15 PM1/2/2024 11:34:17 PMZROxMjtRbZ3vyVA78dMhk3fk4Gg=1/2/2024 10:35:47 PM1/2/2024 11:34:17 PM</TimeStamp>
+        <ID>
+          <String>DDS FOOTBALL</String>
+        </ID>
+      </ObjectSnapshot>
+    </ObjectSnapshots>
+    <DatabaseSnapshot>
+      <Type>Microsoft.AnalysisServices.Database</Type>
+      <TimeStamp>8+KwO8jmnQmrY5nnZQ+j46a1T+o=1/2/2024 10:26:24 PM1/2/2024 11:34:17 PM</TimeStamp>
+      <ID>
+        <String>SSAS</String>
+      </ID>
+    </DatabaseSnapshot>
+    <Granularity>Coarse</Granularity>
+  </Snapshot>
+  <AssemblyLocations />
+  <ProcessingComplete>true</ProcessingComplete>
+  <LastDeployed>2024-01-04T13:02:41.133333Z</LastDeployed>
+</DeploymentSnapshot>

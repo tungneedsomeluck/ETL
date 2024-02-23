@@ -1,0 +1,85 @@
+// set cet league dds
+update DATA_FLOW_DDS 
+set cet = GETDATE()
+where table_name = 'DIM_League'
+
+
+//get lset league dds
+ select lset from DATA_FLOW_DDS
+where table_name = 'DIM_League'
+
+
+
+//
+select l.league_sk, l.league_name, l.season
+from NDS_League l
+where (l.created > ? and created < GETDATE()) or 
+(l.last_updated >= ? and last_updated < GETDATE())
+
+//update dds
+update DIM_League
+set league_name = ?
+where league_id = ?
+
+//
+select t.team_sk, t.team_name, t.logo
+from NDS_Team t
+where (t.created > ? and created < GETDATE()) or 
+(t.last_updated >= ? and last_updated < GETDATE())
+
+//
+update DIM_Team
+set team_name = ?,
+logo = ?
+where team_id = ?
+
+//season
+select l.season
+from NDS_League l
+where (l.created > ? and created < GETDATE()) or 
+(l.last_updated >= ? and last_updated < GETDATE()) 
+
+//extraction in derived column
+RIGHT("0" + (DT_STR,2,1252)DATEPART("MM",(DT_DBDATE)date_time),2)
+RIGHT("0000" + (DT_STR,4,1252)DATEPART("YEAR",(DT_DBDATE)date_time),4)
+RIGHT("00" + (DT_STR,2,1252)DATEPART("DAY",(DT_DBDATE)date_time),2)
+(DT_STR,10,1252)(DT_DBDATE)date_time
+
+[match_sk] INT IDENTITY(1,1) NOT NULL,
+  [match_id] INT,
+  [home_id] INT NOT NULL,
+  [away_id] INT NOT NULL,
+  [home_statistic_id] INT NOT NULL,
+  [away_statistic_id] INT NOT NULL,
+  [league_id] INT NOT NULL,
+  [date_time] DATE NOT NULL,
+  [created] datetime,
+  [last_updated] datetime,
+  [source_id] INT,
+//
+select distinct m.date_time, l.season
+from NDS_Match m join NDS_League l on m.league_id = l.league_sk
+
+//insert YEAR
+insert into DIM_Year 
+(year, season_id) values ()
+
+
+--đổ home sau
+select m.match_id, m.home_id as team_id, m.league_id, m.date_time, (select count(*) 
+														from NDS_Goal g where g.match_id = m.match_id and g.team_id = m.home_id ) as total_goal, 
+(select count(*) 
+from NDS_Card c where c.card_type = 'yellow' and c.match_id=m.home_id ) as total_yellow,(select count(*) 
+from NDS_Card c where c.card_type = 'red' and c.match_id=m.home_id ) as total_red, s.total_shot, s.shot_on_target,
+s.ball_control, s.number_of_passes, s.corner_kicks, s.offside
+from NDS_Match m join NDS_Statistic s on m.home_statistic_id= s.statistic_id
+
+
+--đổ away sau
+select m.match_id, m.away_id as team_id, m.league_id, m.date_time, (select count(*) 
+														from NDS_Goal g where g.match_id = m.match_id and g.team_id = m.away_id ) as total_goal, 
+(select count(*) 
+from NDS_Card c where c.card_type = 'yellow' and c.match_id=m.away_id ) as total_yellow,(select count(*) 
+from NDS_Card c where c.card_type = 'red' and c.match_id=m.away_id ) as total_red, s.total_shot, s.shot_on_target,
+s.ball_control, s.number_of_passes, s.corner_kicks, s.offside
+from NDS_Match m join NDS_Statistic s on m.home_statistic_id= s.statistic_id
